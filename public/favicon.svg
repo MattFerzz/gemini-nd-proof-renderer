@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Tree trunk -->
+  <path d="M15 8V24" stroke="#4B5563" stroke-width="2"/>
+  <!-- Left branch -->
+  <path d="M15 16L8 24" stroke="#4B5563" stroke-width="2"/>
+  <!-- Right branch -->
+  <path d="M15 16L22 24" stroke="#4B5563" stroke-width="2"/>
+  <!-- Top node -->
+  <circle cx="15" cy="8" r="3" fill="#3B82F6"/>
+  <!-- Bottom nodes -->
+  <circle cx="8" cy="24" r="3" fill="#3B82F6"/>
+  <circle cx="22" cy="24" r="3" fill="#3B82F6"/>
+</svg> 
