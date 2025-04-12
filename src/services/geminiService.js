@@ -45,7 +45,6 @@ async function generateLatex(apiKey, formulaInput) {
     const result = await model.generateContent(
       prompt);
     const response = await result.response;
-    console.log('Response:', result);
     const text = response.text();
 
     // Log the raw response from the API
