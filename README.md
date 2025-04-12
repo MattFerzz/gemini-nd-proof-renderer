@@ -1,12 +1,13 @@
-# React + Vite
+# Logical Formula Proof Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A web application that takes logical formulas as input and uses Google's Gemini AI to generate and render proof trees in LaTeX format. The application provides a simple interface for users to input logical formulas and receive beautifully rendered proof trees using MathJax.
 
-Currently, two official plugins are available:
+You can input formulas in a simple text format (like "¬p ∨ q ⊢ p → q") and receive a rendered proof tree using LaTeX and MathJax.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The application uses Google's Gemini AI to generate the proofs, which requires a Gemini API key. For security and privacy, the API key is stored exclusively in the user's browser's localStorage and is never sent to any server other than Google's Gemini API.
 
-## Expanding the ESLint configuration
+To get started, simply clone the repository, run `npm install` to install dependencies, and then `npm run dev` to start the development server. Open your browser to the displayed URL (typically http://localhost:5174), enter your Gemini API key (which will be saved in your browser), and you're ready to start generating proofs.
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## License
+
+MIT
