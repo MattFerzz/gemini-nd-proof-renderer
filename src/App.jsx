@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { MathJaxContext, MathJax } from 'better-react-mathjax'
 import { generateLatex } from './services/geminiService'
+import { saveApiKey, getApiKey } from './services/apiKeyService'
 
 // MathJax configuration
 const config = {
@@ -17,8 +18,18 @@ function App() {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
 
+  // Load API key from localStorage on component mount
+  useEffect(() => {
+    const savedApiKey = getApiKey()
+    if (savedApiKey) {
+      setApiKey(savedApiKey)
+    }
+  }, [])
+
   function handleApiKeyChange(event) {
-    setApiKey(event.target.value)
+    const newApiKey = event.target.value
+    setApiKey(newApiKey)
+    saveApiKey(newApiKey)
   }
 
   function handleFormulaChange(event) {

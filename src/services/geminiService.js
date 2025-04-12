@@ -1,9 +1,10 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
+import { saveApiKey } from './apiKeyService';
 
 /**
  * Generates LaTeX representation of a logical formula using the Gemini API.
  *
- * @param {string} apiKey - The Gemini API key. AIzaSyCxMbpPnz2fmggRDBOA0kHQXMIHNdKUqDs
+ * @param {string} apiKey - The Gemini API key.
  * @param {string} formulaInput - The logical formula string.
  * @returns {Promise<string>} - A promise that resolves with the LaTeX string.
  * @throws {Error} - Throws an error if the API call fails.
@@ -17,6 +18,9 @@ async function generateLatex(apiKey, formulaInput) {
   }
 
   try {
+    // Save the API key to localStorage
+    saveApiKey(apiKey);
+    
     const genAI = new GoogleGenerativeAI(apiKey);
 
     const systemInstructionText =
