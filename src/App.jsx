@@ -15,6 +15,7 @@ function App() {
   const [apiKey, setApiKey] = useState('')
   const [formulaInput, setFormulaInput] = useState('')
   const [latexOutput, setLatexOutput] = useState('')
+  const [thinkingStepsOutput, setThinkingStepsOutput] = useState('');
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
 
@@ -49,15 +50,18 @@ function App() {
     setIsLoading(true)
     setError(null)
     setLatexOutput('')
+    setThinkingStepsOutput('')
 
     try {
-      const generatedLatex = await generateLatex(apiKey, formulaInput)
-      setLatexOutput(`$$${generatedLatex}$$`)
+      const generatedOutput = await generateLatex(apiKey, formulaInput)
+      setLatexOutput(`$$${generatedOutput.latexOutput}$$`)
+      setThinkingStepsOutput(generatedOutput.thinkingSteps)
 
     } catch (err) {
       console.error('Error in handleSubmit:', err)
       setError(err.message || 'Failed to generate LaTeX proof.')
       setLatexOutput('')
+      setThinkingStepsOutput('')
     } finally {
       setIsLoading(false)
     }
@@ -116,6 +120,20 @@ function App() {
                 <p className="text-gray-500 italic">LaTeX proof output will appear here...</p>
               )}
             </div>
+            {thinkingStepsOutput && (
+              <div className="mt-4 p-4 bg-gray-50 border border-gray-200 rounded-md">
+                <details>
+                  <summary className="text-lg font-semibold text-gray-700 cursor-pointer hover:text-blue-600">
+                    Show Thinking Steps
+                  </summary>
+                  <div className="mt-2 p-3 bg-white border border-gray-200 rounded-md">
+                    <pre className="whitespace-pre-wrap text-sm text-gray-600 font-mono">
+                      {thinkingStepsOutput}
+                    </pre>
+                  </div>
+                </details>
+              </div>
+            )}
           </div>
         </div>
       </div>
